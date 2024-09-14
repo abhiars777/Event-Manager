@@ -7,12 +7,25 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Event List</h1>
-    <a href="/create-event">Create New Event</a>
-    <ul>
-        <li th:each="event : ${events}">
-            <a th:href="@{/event/{id}(id=${event.id})}" th:text="${event.title}"></a>
-        </li>
-    </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1 class="logo">Event Manager</h1>
+        <a href="/create-event" class="btn-create-event">Create New Event</a>
+    </nav>
+
+    <div class="container">
+        <h1>Upcoming Events</h1>
+
+        <!-- Event Cards Grid -->
+        <div class="event-cards">
+            <div th:each="event : ${events}" class="event-card"> <!-- Correct Thymeleaf Loop -->
+                <h2 th:text="${event.title}">Event Title</h2>
+                <p th:text="${event.description}">Event Description</p>
+                <!-- <p><strong>Date:</strong> <span th:text="${#dates.format(event.dateTime, 'yyyy-MM-dd HH:mm')}"></span></p> -->
+
+                <a th:href="@{/event/{id}(id=${event.id})}" class="btn-view-details">View Details</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

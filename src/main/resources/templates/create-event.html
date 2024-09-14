@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Create New Event</h1>
-    <form th:action="@{/create-event}" method="post">
-        <input type="text" name="title" placeholder="Event Title" required>
-        <textarea name="description" placeholder="Event Description" required></textarea>
-        <input type="datetime-local" name="dateTime" required>
-        <button type="submit">Create</button>
-    </form>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1 class="logo">Event Manager</h1>
+        <a href="/" class="btn-create-event">Back to Events</a>
+    </nav>
+
+    <div class="container">
+        <h1>Create New Event</h1>
+
+        <form th:action="@{/create-event}" method="post">
+            <input type="text" name="title" placeholder="Event Title" required>
+            <textarea name="description" placeholder="Event Description" required></textarea>
+            <input type="datetime-local" name="dateTime" required>
+            <button type="submit" class="btn-submit">Create Event</button>
+        </form>
+    </div>
 </body>
 </html>

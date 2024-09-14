@@ -1,5 +1,7 @@
 package com.eventmanager.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,15 +18,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Attendee {
+public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String email;
+    private String action;
+    private LocalDateTime timestamp;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
-
+    @JoinColumn(name = "user_id")
+    private User user;
 }

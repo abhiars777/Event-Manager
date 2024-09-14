@@ -3,26 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${event.title}"></title>
+    <title th:text="${event.title}">Event Details</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 th:text="${event.title}"></h1>
-    <p th:text="${event.description}"></p>
-    <h2>Attendees</h2>
-    <ul>
-        <li th:each="attendee : ${event.attendees}" th:text="${attendee.name}"></li>
-    </ul>
-    <h3>Add Attendee</h3>
-    <form th:action="@{/event/{id}/add-attendee(id=${event.id})}" method="post">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <button type="submit">RSVP</button>
-    </form>
-    <h3>Actions</h3>
-    <form th:action="@{/event/{id}/reminder(id=${event.id})}" method="post">
-        <button type="submit">Send Reminder</button>
-    </form>
-    <a href="/">Back to Event List</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1 class="logo">Event Manager</h1>
+        <a href="/" class="btn-create-event">Back to Events</a>
+    </nav>
+
+    <div class="container">
+        <!-- Event Details Card -->
+        <div class="event-card-details">
+            <div style="padding: 2%;">
+                <h1 th:text="${event.title}">Event Title</h1>
+                <p th:text="${event.description}">Event Description</p>
+                <!-- <p><strong>Date:</strong> <span th:text="${#dates.format(event.dateTime, 'yyyy-MM-dd HH:mm')}"></span></p> -->
+            </div>
+            <hr>
+            <div style="padding: 2%;">
+                <h2>Attendees</h2>
+                <ul>
+                <li th:each="attendee : ${event.attendees}" th:text="${attendee.name}">Attendee Name</li>
+            </ul>
+            </div>
+            <hr>
+            <!-- Add Attendee Form -->
+            <div style="padding: 5%;">
+                <h3>Add Attendee</h3>
+                <form th:action="@{/event/{id}/add-attendee(id=${event.id})}" method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <div class="">
+                    <button type="submit" class="btn-submit">(RSVP)</button>
+                </div>
+                </form>
+            </div>
+            <!-- Send Reminder -->
+            
+            <form th:action="@{/event/{id}/reminder(id=${event.id})}" method="post">
+                <button type="submit" class="btn-submit">Send Reminder</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
