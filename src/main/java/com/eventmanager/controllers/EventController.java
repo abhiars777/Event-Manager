@@ -49,7 +49,7 @@ public class EventController {
     @PostMapping("/event/{id}/add-attendee")
     public String addAttendee(@PathVariable Long id, @ModelAttribute Attendee attendee) {
         eventService.addAttendee(id, attendee);
-        return "redirect:/event/" + id;
+        return "redirect:/";
     }
 
     @PostMapping("/event/{id}/reminder")
