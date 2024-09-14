@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Event List</h1>
+    <a href="/create-event">Create New Event</a>
+    <ul>
+        <li th:each="event : ${events}">
+            <a th:href="@{/event/{id}(id=${event.id})}" th:text="${event.title}"></a>
+        </li>
+    </ul>
+</body>
+</html>
